@@ -76,6 +76,21 @@ bool Dictionary::save_changes()const
     return true;
 }
 
+const std::string & Dictionary::get_foreign_word(int number)const
+{
+    return  list_of_foreign_words[number-1];
+}
+
+const std::string & Dictionary::get_polish_word(int number, int index)const
+{
+    return list_of_polish_words[number-1];
+}
+
+int Dictionary::get_number_of_words()const
+{
+    return list_of_foreign_words.size();
+}
+
 void Dictionary::set_alfabet() // metoda wykorzystujaca sortowanie babelkowe
 {
     std::string temp_var;

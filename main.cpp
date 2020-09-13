@@ -1,8 +1,10 @@
-#include "i_Dic.h"
+#include "i_dictionary.h"
 
 int main()
 {
-    i_Dic dictionary("words_list.txt");
+    I_Dictionary dictionary("words_list.txt");
     dictionary.do_all();
+    Dictionary diki;
+    diki.get_number_of_words();
     return 0;
 }

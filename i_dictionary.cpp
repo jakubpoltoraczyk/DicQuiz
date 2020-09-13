@@ -1,37 +1,37 @@
-#include "i_Dic.h"
+#include "i_dictionary.h"
 
-i_Dic::i_Dic(const std::string & file_name): Dictionary(file_name)
+I_Dictionary::I_Dictionary(const std::string & file_name): Dictionary(file_name)
 {
 
 }
 
-void i_Dic::add_word()
+void I_Dictionary::add_word()
 {
     std::string temp_var_1st, temp_var_2nd;
     std::cout << "Podaj angielska wersje slowka: ";
-    std::getline(std::cin, temp_var_1st);
+    std::getline(std::cin, temp_var_1st); // przechwycenie tlumaczenia obcojezycznego
     std::cout << "Podaj polska wersje slowka: ";
-    std::getline(std::cin, temp_var_2nd);
+    std::getline(std::cin, temp_var_2nd); // przechywcenie tlumaczenia polskiego
     Dictionary::add_word(temp_var_1st,temp_var_2nd);
 }
 
-void i_Dic::delete_by_word()
+void I_Dictionary::delete_by_word()
 {
     std::string temp_var;
     std::cout << "Podaj nazwe slowka do usuniecia: ";
-    getline(std::cin, temp_var);
+    getline(std::cin, temp_var); // podanie nazwy obcojezycznej
     Dictionary::delete_by_word(temp_var);
 }
 
-void i_Dic::delete_by_number()
+void I_Dictionary::delete_by_number()
 {
     int temp_var;
     std::cout << "Podaj numer slowka do usuniecia: ";
-    std::cin >> temp_var;
+    std::cin >> temp_var; // podanie numeru na liscie
     Dictionary::delete_by_number(temp_var);
 }
 
-void i_Dic::show_by_letters()const
+void I_Dictionary::show_by_letters()const
 {
     char let_1st, let_2nd;
     std::cout << "Podaj litere poczatkowa: ";
@@ -41,9 +41,9 @@ void i_Dic::show_by_letters()const
     Dictionary::show_by_letters(let_1st,let_2nd);
 }
 
-void i_Dic::show_dictionary_option()const
+void I_Dictionary::show_dictionary_option()const
 {
-    std::cout << std::endl << "LISTA MOZLIWYCH OPCJI SLOWNIKA" << std::endl << std::endl;
+    std::cout << std::endl << "LISTA OPCJI SLOWNIKA" << std::endl << std::endl;
     std::cout << "1 - wyjscie" << std::endl; 
     std::cout << "2 - wyswietlenie mozliwych opcji slownika" << std::endl;
     std::cout << "3 - dodanie nowego slowka" << std::endl;
@@ -54,7 +54,7 @@ void i_Dic::show_dictionary_option()const
     std::cout << "8 - zapisanie postepu" << std::endl << std::endl;
 }
 
-void i_Dic::do_all()
+void I_Dictionary::use_all()
 {
     int option_number;
     do
@@ -67,7 +67,7 @@ void i_Dic::do_all()
         switch(option_number)
         {
             case 1: 
-                std::cout << "Wyjscie z programu" << std::endl; break;
+                std::cout << "Wyjscie z slownika" << std::endl; break;
             case 2:
                 show_dictionary_option(); break;
             case 3:
@@ -81,9 +81,9 @@ void i_Dic::do_all()
             case 7: 
                 show_by_letters(); break;
             case 8:
-                save_changes(); break;
+                save_changes(); break; // bez podania opcji zapisu zmiany nie zostana wprowadzone do pliku
             default:
                 std::cout << "Brak opcji o podanym numerze" << std::endl;
         }
-    }while(option_number!=1);
+    }while(option_number!=1); // ciagle dzialanie petli dopoki nie nastapi podanie opcji wyjscia
 }

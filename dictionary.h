@@ -1,6 +1,6 @@
 /* Klasa reprezentuje slownik wyrazow obcojezycznych, udostepniajac podstawowe mozliwosci obslugi 
    slownika takie jak m.in. dodawanie nowych slowek, usuwanie ich oraz pokazywanie zawartosci slownika
-   w kolejnosci numerowanej i alfabetycznej */ 
+   w kolejnosci numerowanej i alfabetycznej. */
 
 #ifndef DICTIONARY_H
 #define DICTIONARY_H
@@ -26,9 +26,13 @@ class Dictionary
         void show_all()const; // metoda udostepniajaca zawartosc slownika w kolejnosci numerowanej i alfabetycznej
         virtual void show_by_letters(char let_1st, char let_2nd)const; // metoda pokazujaca zawartosc slownika w zakresie liter od 'let_1st' do 'let_2nd'
         bool save_changes()const; // metoda zapisujaca wszelkie zmiany dokonane w slowniku
+        const std::string & get_foreign_word(int number)const; // metoda zwracajaca slowko obcojezyczne o podanym numerze
+        const std::string & get_polish_word(int number, int index)const; // metoda zwracajaca slowko polskie o podanym numerze
+        int get_number_of_words()const; // metoda pobierajaca ilosc slow w slowniku
     private:
         std::vector<std::string> list_of_foreign_words; // lista slowek obcojezycznych
         std::vector<std::string> list_of_polish_words; // lista polskich tlumaczen slowek obcojezycznych (indeksy danego slowka obcjez. i polskiego tlumaczenia sa takie same)
+        
         std::string file_name; // zmienna do przechowania nazwy pliku obslugujacego slownik
         void set_alfabet(); // ustawia zawartosc slownika w kolejnosci alfabetycznej
 };
