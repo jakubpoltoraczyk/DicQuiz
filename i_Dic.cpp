@@ -17,10 +17,18 @@ void i_Dic::add_word()
 
 void i_Dic::delete_by_word()
 {
+    std::string temp_var;
+    std::cout << "Podaj nazwe slowka do usuniecia: ";
+    getline(std::cin, temp_var);
+    Dictionary::delete_by_word(temp_var);
+}
+
+void i_Dic::delete_by_number()
+{
     int temp_var;
     std::cout << "Podaj numer slowka do usuniecia: ";
     std::cin >> temp_var;
-    Dictionary::delete_word(temp_var);
+    Dictionary::delete_by_number(temp_var);
 }
 
 void i_Dic::show_by_letters()const
@@ -30,7 +38,7 @@ void i_Dic::show_by_letters()const
     std::cin >> let_1st;
     std::cout << "Podaj litere koncowa: ";
     std::cin >> let_2nd;
-    Dictionary::show_letters(let_1st,let_2nd);
+    Dictionary::show_by_letters(let_1st,let_2nd);
 }
 
 void i_Dic::show_dictionary_option()const
@@ -39,10 +47,11 @@ void i_Dic::show_dictionary_option()const
     std::cout << "1 - wyjscie" << std::endl; 
     std::cout << "2 - wyswietlenie mozliwych opcji slownika" << std::endl;
     std::cout << "3 - dodanie nowego slowka" << std::endl;
-    std::cout << "4 - usuniecie slowka" << std::endl;
-    std::cout << "5 - pokazanie zawartosci slownika" << std::endl;
-    std::cout << "6 - pokazanie zawartosci slownika od litery 'x' do litery 'y'" << std::endl;
-    std::cout << "7 - zapisanie postepu" << std::endl << std::endl;
+    std::cout << "4 - usuniecie slowka (nazwa)" << std::endl;
+    std::cout << "5 - usuniecie slowka (numer) " << std::endl;
+    std::cout << "6 - pokazanie zawartosci slownika" << std::endl;
+    std::cout << "7 - pokazanie zawartosci slownika od litery 'x' do litery 'y'" << std::endl;
+    std::cout << "8 - zapisanie postepu" << std::endl << std::endl;
 }
 
 void i_Dic::do_all()
@@ -64,12 +73,14 @@ void i_Dic::do_all()
             case 3:
                 add_word(); break;
             case 4:
-                delete_word(); break;
+                delete_by_word(); break;
             case 5:
+                delete_by_number(); break;
+            case 6:
                 show_all(); break;
-            case 6: 
-                show_letters(); break;
-            case 7:
+            case 7: 
+                show_by_letters(); break;
+            case 8:
                 save_changes(); break;
             default:
                 std::cout << "Brak opcji o podanym numerze" << std::endl;
