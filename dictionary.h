@@ -27,7 +27,7 @@ class Dictionary
         virtual void show_by_letters(char let_1st, char let_2nd)const; // metoda pokazujaca zawartosc slownika w zakresie liter od 'let_1st' do 'let_2nd'
         bool save_changes()const; // metoda zapisujaca wszelkie zmiany dokonane w slowniku
         const std::string & get_foreign_word(int number)const; // metoda zwracajaca slowko obcojezyczne o podanym numerze
-        const std::string & get_polish_word(int number, int index)const; // metoda zwracajaca slowko polskie o podanym numerze
+        const std::string & get_polish_word(int number)const; // metoda zwracajaca slowko polskie o podanym numerze
         int get_number_of_words()const; // metoda pobierajaca ilosc slow w slowniku
     private:
         std::vector<std::string> list_of_foreign_words; // lista slowek obcojezycznych

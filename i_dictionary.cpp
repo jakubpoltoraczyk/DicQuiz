@@ -39,11 +39,12 @@ void I_Dictionary::show_by_letters()const
     std::cout << "Podaj litere koncowa: ";
     std::cin >> let_2nd;
     Dictionary::show_by_letters(let_1st,let_2nd);
+    std::cout << std::endl;
 }
 
 void I_Dictionary::show_dictionary_option()const
 {
-    std::cout << std::endl << "LISTA OPCJI SLOWNIKA" << std::endl << std::endl;
+    std::cout << std::endl << "MENU SLOWNIKA" << std::endl << std::endl;
     std::cout << "1 - wyjscie" << std::endl; 
     std::cout << "2 - wyswietlenie mozliwych opcji slownika" << std::endl;
     std::cout << "3 - dodanie nowego slowka" << std::endl;
@@ -51,7 +52,7 @@ void I_Dictionary::show_dictionary_option()const
     std::cout << "5 - usuniecie slowka (numer) " << std::endl;
     std::cout << "6 - pokazanie zawartosci slownika" << std::endl;
     std::cout << "7 - pokazanie zawartosci slownika od litery 'x' do litery 'y'" << std::endl;
-    std::cout << "8 - zapisanie postepu" << std::endl << std::endl;
+    std::cout << "8 - zapisanie postepu" << std::endl;
 }
 
 void I_Dictionary::use_all()
@@ -64,6 +65,7 @@ void I_Dictionary::use_all()
         std::cin >> option_number;
         std::cin.get();
         std::cout << std::endl;
+        system("clear");
         switch(option_number)
         {
             case 1: 

@@ -81,7 +81,7 @@ const std::string & Dictionary::get_foreign_word(int number)const
     return  list_of_foreign_words[number-1];
 }
 
-const std::string & Dictionary::get_polish_word(int number, int index)const
+const std::string & Dictionary::get_polish_word(int number)const
 {
     return list_of_polish_words[number-1];
 }
