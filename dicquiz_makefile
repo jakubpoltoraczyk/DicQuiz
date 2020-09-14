@@ -1,0 +1,21 @@
+#Makefile dla programu "DicQuiz"
+
+all: dicquiz clean
+
+dicquiz: main.o i_dictionary.o dictionary.o dicquiz.o
+	g++ -o dicquiz main.o i_dictionary.o dictionary.o dicquiz.o
+
+main.o: main.cpp dicquiz.h
+	g++ -c main.cpp
+
+dictionary.o: dictionary.cpp dictionary.h
+	g++ -c dictionary.cpp
+
+i_dictionary.o: i_dictionary.cpp i_dictionary.h dictionary.h
+	g++ -c i_dictionary.cpp
+
+dicquiz.o: dicquiz.cpp dicquiz.h i_dictionary.h
+	g++ -c dicquiz.cpp
+
+clean:
+	@rm -f *.o *~
