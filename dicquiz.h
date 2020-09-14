@@ -15,8 +15,10 @@ class DicQuiz
         I_Dictionary dic;
         Quiz_size quiz_size;
         const int * draw_numbers()const;
-        void make_quiz()const;
+        void make_quiz();
         void show_dicquiz_option()const;
+        void show_quiz_option()const;
+        bool change_quiz_size(int n);
 };
 
 #endif // IDIC_QUIZ_H
