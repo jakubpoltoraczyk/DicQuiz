@@ -22,7 +22,7 @@ Dictionary::Dictionary(const std::string & f_name): file_name(f_name)
     }
 }
 
-void Dictionary::add_word(const std::string & new_for_word, const std::string & new_pol_word)
+void Dictionary::add_word(const std::string & new_pol_word, const std::string & new_for_word)
 {
     list_of_foreign_words.push_back(new_for_word);
     list_of_polish_words.push_back(new_pol_word);
@@ -114,7 +114,7 @@ void Dictionary::set_alfabet() // metoda wykorzystujaca sortowanie babelkowe
         for(int j=1;j<list_of_foreign_words.size();++j)
             if(list_of_foreign_words[j]<list_of_foreign_words[j-1])
             {
-                std::swap(list_of_foreign_words[j],list_of_foreign_words[j-1]);
+                std::swap(list_of_foreign_words[j],list_of_foreign_words[j-1]); // metoda swap() zamienia miejscami dwa elementy tablicy
                 std::swap(list_of_polish_words[j],list_of_polish_words[j-1]);
             }
 }

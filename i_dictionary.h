@@ -24,9 +24,12 @@ class I_Dictionary: public Dictionary
         void show_dictionary_option()const; // metoda udostepniajaca spis opcji umozliwiajacych korzystanie ze slownika w trybie use_all()
         void use_all(); // metoda opisana we wstepie do klasy
     private:
+        void choose_changing_mode(); // pomocnicza metoda umozliwiajacy wielokrotny wybor trybu zmieniania wyrazu
         std::string ask4_for_word()const; // pomocnicza metoda pytajaca uzytkownika o obcojezyczne slowo
         std::string ask4_pol_word()const; // pomocnicza metoda pytajaca uzytkownika o polskie slowo
         int ask4_number()const; // pomocnicza metoda pytajaca uzytkownika o numer slowa na liscie
 };
+
+int ask4_choice(); // funkcja sluzaca do pobierania od uzytkownika cyfry, bedacej wybrana przez niego opcja menu
 
 #endif // IDIC_H

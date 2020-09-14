@@ -2,17 +2,17 @@
 
 DicQuiz::DicQuiz(): dic()
 {
-    srand(time(NULL));
+    srand(time(NULL)); // konieczne dla losowania roznych pseudolosowych liczb na przestrzeni kilku uruchomien programu
 }
 
 DicQuiz::DicQuiz(const I_Dictionary & new_dic): dic(new_dic)
 {
-    srand(time(NULL));
+    srand(time(NULL)); // jak wyzej
 }
 
 DicQuiz::DicQuiz(const std::string & file_name): dic(file_name)
 {
-    srand(time(NULL));
+    srand(time(NULL)); // jak wyzej
 }
 
 void DicQuiz::start()
@@ -22,10 +22,7 @@ void DicQuiz::start()
     do
     {
         show_dicquiz_option();
-        std::cout << std::endl << "Podaj swoj wybor: ";
-        std::cin >> option_number;
-        std::cin.get();
-        std::cout << std::endl;
+        option_number = ask4_choice();
         system("clear");
         switch(option_number)
         {
@@ -72,10 +69,7 @@ void DicQuiz::make_quiz()
     do
     {
         show_quiz_option();
-        std::cout << std::endl << "Podaj swoj wybor: ";
-        std::cin >> option_number;
-        std::cin.get();
-        std::cout << std::endl;
+        option_number = ask4_choice();
         system("clear");
         if(change_quiz_size(option_number))
         {
@@ -108,9 +102,11 @@ void DicQuiz::make_quiz()
             }
             std::cout << std::endl << "Twoj ostateczny rezultat to: " << 100*double(points)/total << "% (" << points << "/" << total << ")" << std::endl;
             std::cout << "Gratulacje!" << std::endl;
+        delete [] question_number;
         }
+        else if(option_number!=1)
+                std::cout << "Brak opcji o podanym numerze" << std::endl;
     }while(option_number!=1);
-    delete [] question_number;
 }
 
 void DicQuiz::show_dicquiz_option()const

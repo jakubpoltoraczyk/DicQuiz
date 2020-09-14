@@ -20,7 +20,7 @@ class Dictionary
         Dictionary(const std::string & f_name = ".idic_lofw_2506.txt");
         virtual ~Dictionary() {} // destruktor wirtualny, nie wykonywujacy zadnych zadan
         /* Metoda dodajaca slowko do slownika, parametry to kolejno wyraz obcojezyczny oraz ciag znakow reprezentujacych jego polskie tlumaczenie */
-        virtual void add_word(const std::string & new_for_word, const std::string & new_pol_word);
+        virtual void add_word(const std::string & new_pol_word, const std::string & new_for_word);
         virtual void delete_by_word(const std::string & del_word); // metoda usuwajaca slowko o podanej nazwie
         virtual void delete_by_number(int word_number); // metoda usuwajaca slowka o podanym numerze w slowniku
         virtual void change_word(const std::string & pol_word, const std::string & for_word, int number); // metoda umozliwiajaca zmienienie zarowno obcojezycznego tlumaczenia jak i polskiego
