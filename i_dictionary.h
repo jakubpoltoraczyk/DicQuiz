@@ -17,9 +17,16 @@ class I_Dictionary: public Dictionary
         void add_word(); // metoda dodajaca nowy wyraz
         void delete_by_word(); // metoda usuwajaca wyraz na podstawie jego obcojezycznego tlumaczenia
         void delete_by_number(); // metoda usuwajaca wyraz na podstawie numeru na liscie
+        void change_word(); // metoda zmieniajaca zarowno obcojezyczne jak i polskie tlumaczenie
+        void change_foreign_word(); // metoda zmieniajaca obcojezyczne tlumaczenie
+        void change_polish_word(); // metoda zmieniajaca polskie tlumaczenie
         void show_by_letters()const; // metoda pokazujaca zawartosc slownika w zakresie liter od 'let_1st' do 'let_2nd'
         void show_dictionary_option()const; // metoda udostepniajaca spis opcji umozliwiajacych korzystanie ze slownika w trybie use_all()
         void use_all(); // metoda opisana we wstepie do klasy
+    private:
+        std::string ask4_for_word()const; // pomocnicza metoda pytajaca uzytkownika o obcojezyczne slowo
+        std::string ask4_pol_word()const; // pomocnicza metoda pytajaca uzytkownika o polskie slowo
+        int ask4_number()const; // pomocnicza metoda pytajaca uzytkownika o numer slowa na liscie
 };
 
 #endif // IDIC_H

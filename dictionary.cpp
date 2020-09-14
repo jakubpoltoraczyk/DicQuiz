@@ -45,6 +45,22 @@ void Dictionary::delete_by_number(int word_number)
     list_of_polish_words.erase(list_of_polish_words.begin() + word_number - 1);
 }
 
+void Dictionary::change_word(const std::string & pol_word, const std::string & for_word, int number)
+{
+    list_of_foreign_words[number-1] = for_word; // minus jeden ze wzgledu na numerowanie dla uzytkownika od 1 a nie 0 (analogicznie w ponizszych metod od zmian tlumaczen)
+    list_of_polish_words[number-1] = pol_word;
+}
+
+void Dictionary::change_foreign_word(const std::string & for_word, int number)
+{
+    list_of_foreign_words[number-1] = for_word;
+}
+
+void Dictionary::change_polish_word(const std::string & pol_word, int number)
+{
+    list_of_polish_words[number-1] = pol_word;
+}
+
 void Dictionary::show_all()const
 {
     for(int i=0;i<list_of_foreign_words.size();++i)
@@ -68,7 +84,7 @@ bool Dictionary::save_changes()const
     words_file.open(file_name); // tworzy plik lub go nadpisuje (nazwa zapamietana w konstruktorze)
     for(int i=0;i<list_of_foreign_words.size();++i)
     {
-        words_file << list_of_foreign_words[i] << " - " << list_of_polish_words[i];
+        words_file << list_of_foreign_words[i] << "-" << list_of_polish_words[i];
         if(i!=list_of_foreign_words.size()-1)
             words_file << std::endl;
     }
@@ -95,7 +111,7 @@ void Dictionary::set_alfabet() // metoda wykorzystujaca sortowanie babelkowe
 {
     std::string temp_var;
     for(int i=0;i<list_of_foreign_words.size();++i)
-        for(int j=1;j<list_of_foreign_words.size()-1;++j)
+        for(int j=1;j<list_of_foreign_words.size();++j)
             if(list_of_foreign_words[j]<list_of_foreign_words[j-1])
             {
                 std::swap(list_of_foreign_words[j],list_of_foreign_words[j-1]);

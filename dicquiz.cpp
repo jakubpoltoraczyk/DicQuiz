@@ -49,7 +49,7 @@ const int * DicQuiz::draw_numbers()const
         numbers[i] = -1;
     for(int i=0;i<quiz_size;++i)
     {
-        help_number = (std::rand()%dic.get_number_of_words() + 0);
+        help_number = (std::rand()%dic.get_number_of_words() + 1);
         for(int j=0;j<quiz_size;++j)
         {
             if(numbers[j] == help_number)
@@ -106,10 +106,10 @@ void DicQuiz::make_quiz()
                 ++total;
                 std::cout << "Twoj wynik to: " << 100*double(points)/total << "% (" << points << "/" << total << ")" << std::endl;
             }
+            std::cout << std::endl << "Twoj ostateczny rezultat to: " << 100*double(points)/total << "% (" << points << "/" << total << ")" << std::endl;
+            std::cout << "Gratulacje!" << std::endl;
         }
     }while(option_number!=1);
-    std::cout << "Twoj ostateczny rezultat to: " << 100*double(points)/total << "% (" << points << "/" << total << ")" << std::endl;
-    std::cout << "Gratulacje!" << std::endl;
     delete [] question_number;
 }
 
