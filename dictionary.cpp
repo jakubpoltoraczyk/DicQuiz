@@ -49,11 +49,13 @@ void Dictionary::change_word(const std::string & pol_word, const std::string & f
 {
     list_of_foreign_words[number-1] = for_word; // minus jeden ze wzgledu na numerowanie dla uzytkownika od 1 a nie 0 (analogicznie w ponizszych metod od zmian tlumaczen)
     list_of_polish_words[number-1] = pol_word;
+    set_alfabet();
 }
 
 void Dictionary::change_foreign_word(const std::string & for_word, int number)
 {
     list_of_foreign_words[number-1] = for_word;
+    set_alfabet();
 }
 
 void Dictionary::change_polish_word(const std::string & pol_word, int number)
