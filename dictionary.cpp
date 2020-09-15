@@ -1,14 +1,16 @@
+/* DicQuiz wersja 1.0 */
+
 #include "dictionary.h"
 
 
 Dictionary::Dictionary(const std::string & f_name): file_name(f_name)
 {
-    if(file_name==".idic_lofw_2506.txt") // nazwa ukyrtego pliku do zapisu zawartosci slownika
-        system("touch .idic_lofw_2506.txt");
+    std::ifstream words_file;
+    words_file.open(file_name);
+    if(!words_file.is_open()) // sprawdzanie poprawnosci otwarcia pliku
+        system("touch .idic_lofw_2506.txt"); // nazwa ukyrtego pliku do zapisu zawartosci slownika
     else
     {
-        std::ifstream words_file;
-        words_file.open(file_name);
         std::string temp_var;
         while(!words_file.eof())
         {

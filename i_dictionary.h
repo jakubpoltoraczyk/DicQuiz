@@ -1,3 +1,5 @@
+/* DicQuiz wersja 1.0 */
+
 /* Klasa reprezentuje interaktywny slownik wyrazow obcojezycznych. Udostepnia mozliwosci po dziedziczonej
    publicznie klasie Dictionary, rozwijajac znaczna czesc z nich o sposobnosc interakcji z uzytkownikiem.
    Z tego tez wzgledu metody wystepujace w owej klasie sa pozbawione jakichkolwiek parametrow - potrzebne

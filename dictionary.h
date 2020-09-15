@@ -1,3 +1,5 @@
+/* DicQuiz wersja 1.0 */
+
 /* Klasa reprezentuje slownik wyrazow obcojezycznych, udostepniajac podstawowe mozliwosci obslugi 
    slownika takie jak m.in. dodawanie nowych slowek, usuwanie ich oraz pokazywanie zawartosci slownika
    w kolejnosci numerowanej i alfabetycznej. */

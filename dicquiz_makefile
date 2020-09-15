@@ -1,4 +1,4 @@
-#Makefile dla programu "DicQuiz"
+#Makefile dla programu "DicQuiz wersja 1.0"
 
 all: dicquiz clean
 

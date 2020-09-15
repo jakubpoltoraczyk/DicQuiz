@@ -1,3 +1,5 @@
+/* DicQuiz wersja 1.0 */
+
 /* Klasa reprezentujaca interaktywny program DicQuiz, ktorego celem jest umozliwienie nauki slowek obcojezycznych, 
    za posrednictwem prostego quizu opartego na tlumaczeniu slowek. Zawarty w klasie obiekt klasy::I_Dictionary stanowi
    baze danych dla slowek potrzebnych do nauki. Jedyna metoda dostepna dla uzytkownika jest metoda start(), ktora uruchamia
@@ -24,7 +26,8 @@ class DicQuiz
         const int * draw_numbers()const; // metoda losujaca niepowtarzajace sie numery slowek z bazy zgodnie z rozmiarem quizu
         void make_quiz(); // metoda uruchamiajaca quiz
         void show_dicquiz_option()const; // metoda ukazujaca opcje dostepne w programie DicQuiz
-        void show_quiz_option()const; // metoda ukazujaca opcjie dostepne w quizie
+        void show_quiz_size_option()const; // metoda ukazujaca opcje rozmiaru quizu
+        void show_quiz_lang_option()const; // metoda ukazujaca opcje jezykowe quizu (z obcjez. na polski lub na odwrot)
         bool change_quiz_size(int n); // metoda zmieniajaca rozmiar quizu
 };
 

@@ -1,3 +1,5 @@
+/* DicQuiz wersja 1.0 */
+
 #include "i_dictionary.h"
 
 I_Dictionary::I_Dictionary(const std::string & file_name): Dictionary(file_name)
@@ -152,7 +154,7 @@ int ask4_choice()
     if(std::cin.fail()) // jesli wystapil blad wpisywania
     {
         std::cin.clear(); // wyczysc strumien
-        std::cin.ignore(1000, '\n'); // zignoruj wszystko
+        std::cin.ignore(1000, '\n'); // zignoruj wszystko do 1000 znakow az do napotkania znaku 'enter'
     }
     else
         std::cin.get(); // jesli poprawnie pobierz pozostaly znak '\n' w strumieniu
