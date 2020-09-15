@@ -1,0 +1,9 @@
+Autor: Jakub Półtoraczyk
+Data powstania: 15.09.20
+Wersja: DicQuiz 1.1
+
+Instrukcja uruchomienia DicQuiz:
+
+1. Wejdz w terminalu (konsoli) w folder pt. "DicQuiz".
+2. Przed pierwszym uruchomieniem wpisz następująca instrukcję: "make -f dicquiz_makefile".
+3. Aby uruchomic program wpisz instrukcje: "./dicquiz"

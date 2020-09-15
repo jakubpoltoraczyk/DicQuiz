@@ -1,4 +1,4 @@
-/* DicQuiz wersja 1.0 */
+/* DicQuiz wersja 1.1 */
 
 #include "dictionary.h"
 

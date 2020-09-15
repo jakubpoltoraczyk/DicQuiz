@@ -1,4 +1,4 @@
-/* DicQuiz wersja 1.0 */
+/* DicQuiz wersja 1.1 */
 
 /* Celem stworzenia programu bylo umozliwienie jednoczesnego ogladania serialu/filmu
    w jezyku angielskim oraz szybkiego zanotowania nieznanych slowek wraz ze sposobnoscia przejrzenia
