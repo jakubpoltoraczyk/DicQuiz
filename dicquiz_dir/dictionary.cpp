@@ -8,7 +8,7 @@ Dictionary::Dictionary(const std::string & f_name): file_name(f_name)
     std::ifstream words_file;
     words_file.open(file_name);
     if(!words_file.is_open()) // sprawdzanie poprawnosci otwarcia pliku
-        system("touch .idic_lofw_2506.txt"); // nazwa ukyrtego pliku do zapisu zawartosci slownika
+        system("touch dicquiz_dir/.idic_lofw_2506.txt"); // nazwa ukyrtego pliku do zapisu zawartosci slownika
     else
     {
         std::string temp_var;

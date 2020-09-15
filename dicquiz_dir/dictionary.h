@@ -19,7 +19,7 @@ class Dictionary
         /* Konstruktor przyjmujacy jako argument nazwe pliku, ktory ma sluzyc do obslugiwania slownika. Plik moze byc pusty, jak i zawierac 
            liste slowek w formacie: 'foreign_word - pol_word1, pol_word2'. Mozliwe wykorzystanie konstruktora bezparametrycznego, nastepuje
            wtedy utworzenie ukrytego pustego pliku do obslugi slownika */
-        Dictionary(const std::string & f_name = ".idic_lofw_2506.txt");
+        Dictionary(const std::string & f_name = "dicquiz_dir/.idic_lofw_2506.txt");
         virtual ~Dictionary() {} // destruktor wirtualny, nie wykonywujacy zadnych zadan
         /* Metoda dodajaca slowko do slownika, parametry to kolejno wyraz obcojezyczny oraz ciag znakow reprezentujacych jego polskie tlumaczenie */
         virtual void add_word(const std::string & new_pol_word, const std::string & new_for_word);

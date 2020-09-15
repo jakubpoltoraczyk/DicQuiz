@@ -5,17 +5,17 @@ all: dicquiz clean
 dicquiz: main.o i_dictionary.o dictionary.o dicquiz.o
 	g++ -o dicquiz main.o i_dictionary.o dictionary.o dicquiz.o
 
-main.o: main.cpp dicquiz.h dictionary.h i_dictionary.h
-	g++ -c main.cpp
+main.o: dicquiz_dir/main.cpp dicquiz_dir/dicquiz.h dicquiz_dir/dictionary.h dicquiz_dir/i_dictionary.h
+	g++ -c dicquiz_dir/main.cpp
 
-dictionary.o: dictionary.cpp dictionary.h
-	g++ -c dictionary.cpp
+dictionary.o: dicquiz_dir/dictionary.cpp dicquiz_dir/dictionary.h
+	g++ -c dicquiz_dir/dictionary.cpp
 
-i_dictionary.o: i_dictionary.cpp i_dictionary.h dictionary.h
-	g++ -c i_dictionary.cpp
+i_dictionary.o: dicquiz_dir/i_dictionary.cpp dicquiz_dir/i_dictionary.h dicquiz_dir/dictionary.h
+	g++ -c dicquiz_dir/i_dictionary.cpp
 
-dicquiz.o: dicquiz.cpp dicquiz.h i_dictionary.h
-	g++ -c dicquiz.cpp
+dicquiz.o: dicquiz_dir/dicquiz.cpp dicquiz_dir/dicquiz.h dicquiz_dir/i_dictionary.h
+	g++ -c dicquiz_dir/dicquiz.cpp
 
 clean:
 	@rm -f *.o *~
