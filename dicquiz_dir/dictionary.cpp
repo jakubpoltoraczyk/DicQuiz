@@ -1,4 +1,4 @@
-/* DicQuiz wersja 1.1 */
+/* DicQuiz wersja 1.25 */
 
 #include "dictionary.h"
 
@@ -11,114 +11,112 @@ Dictionary::Dictionary(const std::string & f_name): file_name(f_name)
         system("touch dicquiz_dir/.idic_lofw_2506.txt"); // nazwa ukyrtego pliku do zapisu zawartosci slownika
     else
     {
-        std::string temp_var;
+        std::string tmp;
         while(!words_file.eof())
         {
-        std::getline(words_file, temp_var, '-'); // pobranie obcojezycznej wersji, pominiecie znaku '-'
-        list_of_foreign_words.push_back(temp_var);
-        std::getline(words_file, temp_var); // pobranie polskiej wersji
-        list_of_polish_words.push_back(temp_var);
+            std::getline(words_file, tmp, '-'); // pobranie obcojezycznej wersji, pominiecie znaku '-'
+            foreign_translations.push_back(tmp);
+            std::getline(words_file, tmp); // pobranie polskiej wersji
+            polish_translations.push_back(tmp);
         }
         words_file.close();
-        set_alfabet(); // ulozenie alfabetyczne raz w konstruktorze (pozniej aby w metodzie Dictionary::add_word())
+        set_alphabetically(); // ulozenie alfabetyczne raz w konstruktorze (pozniej aby w metodzie Dictionary::add_word())
     }
 }
 
-void Dictionary::add_word(const std::string & new_pol_word, const std::string & new_for_word)
+void Dictionary::add_word(const std::string & pol_trans, const std::string & for_trans)
 {
-    list_of_foreign_words.push_back(new_for_word);
-    list_of_polish_words.push_back(new_pol_word);
-    set_alfabet(); // ukladanie alfabetycznie po kazdym nowo dodanym slowku
+    foreign_translations.push_back(for_trans);
+    polish_translations.push_back(pol_trans);
+    set_alphabetically(); // ukladanie alfabetycznie po kazdym nowo dodanym slowku
 }
 
-void Dictionary::delete_by_word(const std::string & del_word)
+void Dictionary::delete_word_by_foreign_translation(const std::string & for_trans)
 {
-    for(int i=0;i<list_of_foreign_words.size();++i)
-        if(list_of_foreign_words[i]==del_word)
+    for(int i = 0; i < foreign_translations.size(); ++i)
+        if(foreign_translations[i] == for_trans)
         {
-            delete_by_number(i+1); // plus jeden ze wzgledu przystosowanie metody Dictionary::delete_by_number() na liczenie slow od 1 a nie 0 (ulatwienie dla uzytkownika)
-            i = list_of_foreign_words.size();
+            delete_word_by_number(i+1); // plus jeden ze wzgledu przystosowanie metody Dictionary::delete_by_number() na liczenie slow od 1 a nie 0 (ulatwienie dla uzytkownika)
+            i = foreign_translations.size();
         }
 }
 
-void Dictionary::delete_by_number(int word_number)
+void Dictionary::delete_word_by_number(int word_number)
 {
-    list_of_foreign_words.erase(list_of_foreign_words.begin() + word_number - 1); // liczy od 1 a nie od 0 (ulatwienie dla uzytkownika)
-    list_of_polish_words.erase(list_of_polish_words.begin() + word_number - 1);
+    foreign_translations.erase(foreign_translations.begin() + word_number - 1); // liczy od 1 a nie od 0 (ulatwienie dla uzytkownika)
+    polish_translations.erase(polish_translations.begin() + word_number - 1);
 }
 
-void Dictionary::change_word(const std::string & pol_word, const std::string & for_word, int number)
+void Dictionary::change_whole_translation(const std::string & pol_trans, const std::string & for_trans, int word_number)
 {
-    list_of_foreign_words[number-1] = for_word; // minus jeden ze wzgledu na numerowanie dla uzytkownika od 1 a nie 0 (analogicznie w ponizszych metod od zmian tlumaczen)
-    list_of_polish_words[number-1] = pol_word;
-    set_alfabet();
+    foreign_translations[word_number-1] = for_trans; // minus jeden ze wzgledu na numerowanie dla uzytkownika od 1 a nie 0 (analogicznie w ponizszych metod od zmian tlumaczen)
+    polish_translations[word_number-1] = pol_trans;
+    set_alphabetically();
 }
 
-void Dictionary::change_foreign_word(const std::string & for_word, int number)
+void Dictionary::change_foreign_translation(const std::string & for_trans, int word_number)
 {
-    list_of_foreign_words[number-1] = for_word;
-    set_alfabet();
+    foreign_translations[word_number-1] = for_trans;
+    set_alphabetically();
 }
 
-void Dictionary::change_polish_word(const std::string & pol_word, int number)
+void Dictionary::change_polish_translation(const std::string & pol_trans, int word_number)
 {
-    list_of_polish_words[number-1] = pol_word;
+    polish_translations[word_number-1] = pol_trans;
 }
 
-void Dictionary::show_all()const
+void Dictionary::show_all_words()const
 {
-    for(int i=0;i<list_of_foreign_words.size();++i)
-        std::cout << i+1 << ". " << list_of_foreign_words[i] << " - " << list_of_polish_words[i] << std::endl;
+    for(int i = 0; i < foreign_translations.size(); ++i)
+        std::cout << i+1 << ". " << foreign_translations[i] << " - " << polish_translations[i] << std::endl;
 }
 
-void Dictionary::show_by_letters(char let_1st, char let_2nd)const
+void Dictionary::show_words_by_letters(char letter_1st, char letter_2nd)const
 {
-    for(int i=0;i<list_of_foreign_words.size();++i)
-    {
-        if(list_of_foreign_words[i][0]>=let_1st&&list_of_foreign_words[i][0]<=let_2nd) // od litery 'x' do 'y' wlacznie 
-            std::cout << i+1 << ". " << list_of_foreign_words[i] << " - " << list_of_polish_words[i] << std::endl;
-        if(list_of_foreign_words[i][0]>let_2nd)
-            i = list_of_foreign_words.size();
-    }
+    for(int i = 0; i < foreign_translations.size() && foreign_translations[i][0] <= letter_2nd; ++i) // zawarty warunek 'pokaz do drugiej litery wlacznie'
+        if(foreign_translations[i][0] >= letter_1st) // warunek 'pokaz od pierwszej litery wlacznie'
+            std::cout << i+1 << ". " << foreign_translations[i] << " - " << polish_translations[i] << std::endl;
 }
 
 bool Dictionary::save_changes()const
 {
     std::ofstream words_file;
     words_file.open(file_name); // tworzy plik lub go nadpisuje (nazwa zapamietana w konstruktorze)
-    for(int i=0;i<list_of_foreign_words.size();++i)
+    for(int i = 0; i < foreign_translations.size(); ++i)
     {
-        words_file << list_of_foreign_words[i] << "-" << list_of_polish_words[i];
-        if(i!=list_of_foreign_words.size()-1)
+        words_file << foreign_translations[i] << "-" << polish_translations[i];
+        if(i!=foreign_translations.size()-1)
             words_file << std::endl;
     }
     words_file.close();
     return true;
 }
 
-const std::string & Dictionary::get_foreign_word(int number)const
+const std::string & Dictionary::get_foreign_translation(int word_number)const
 {
-    return  list_of_foreign_words[number-1];
+    return  foreign_translations[word_number-1];
 }
 
-const std::string & Dictionary::get_polish_word(int number)const
+const std::string & Dictionary::get_polish_translation(int word_number)const
 {
-    return list_of_polish_words[number-1];
+    return polish_translations[word_number-1];
 }
 
 int Dictionary::get_number_of_words()const
 {
-    return list_of_foreign_words.size();
+    return foreign_translations.size();
 }
 
-void Dictionary::set_alfabet() // metoda wykorzystujaca sortowanie babelkowe
+void Dictionary::set_alphabetically() // metoda wykorzystujaca sortowanie babelkowe
 {
-    std::string temp_var;
-    for(int i=0;i<list_of_foreign_words.size();++i)
-        for(int j=1;j<list_of_foreign_words.size();++j)
-            if(list_of_foreign_words[j]<list_of_foreign_words[j-1])
-            {
-                std::swap(list_of_foreign_words[j],list_of_foreign_words[j-1]); // metoda swap() zamienia miejscami dwa elementy tablicy
-                std::swap(list_of_polish_words[j],list_of_polish_words[j-1]);
-            }
+    for(int i = 0;i < foreign_translations.size(); ++i)
+        for(int j = 1; j < foreign_translations.size(); ++j)
+            if(foreign_translations[j] < foreign_translations[j-1])
+                swap_by_number(j, j-1);
+}
+
+void Dictionary::swap_by_number(int word_number_1st, int word_number_2nd)
+{
+    std::swap(foreign_translations[word_number_1st], foreign_translations[word_number_2nd]); // metoda std::swap() zamienia miejscami dwa elementy tablicy
+    std::swap(polish_translations[word_number_1st], polish_translations[word_number_2nd]);
 }

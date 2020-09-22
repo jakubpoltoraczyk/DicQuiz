@@ -1,4 +1,4 @@
-/* DicQuiz wersja 1.1 */
+/* DicQuiz wersja 1.25 */
 
 /* Klasa reprezentuje interaktywny slownik wyrazow obcojezycznych. Udostepnia mozliwosci po dziedziczonej
    publicznie klasie Dictionary, rozwijajac znaczna czesc z nich o sposobnosc interakcji z uzytkownikiem.
@@ -17,12 +17,12 @@ class I_Dictionary: public Dictionary
     public: 
         explicit I_Dictionary(const std::string & file_name = "dicquiz_dir/.idic_lofw_2506.txt"); // konstruktor identyczny jak w klasie Dictionary
         void add_word(); // metoda dodajaca nowy wyraz
-        void delete_by_word(); // metoda usuwajaca wyraz na podstawie jego obcojezycznego tlumaczenia
-        void delete_by_number(); // metoda usuwajaca wyraz na podstawie numeru na liscie
-        void change_word(); // metoda zmieniajaca zarowno obcojezyczne jak i polskie tlumaczenie
-        void change_foreign_word(); // metoda zmieniajaca obcojezyczne tlumaczenie
-        void change_polish_word(); // metoda zmieniajaca polskie tlumaczenie
-        void show_by_letters()const; // metoda pokazujaca zawartosc slownika w zakresie liter od 'let_1st' do 'let_2nd'
+        void delete_word_by_foreign_translation(); // metoda usuwajaca wyraz na podstawie jego obcojezycznego tlumaczenia
+        void delete_word_by_number(); // metoda usuwajaca wyraz na podstawie numeru na liscie
+        void change_whole_translation(); // metoda zmieniajaca zarowno obcojezyczne jak i polskie tlumaczenie
+        void change_foreign_translation(); // metoda zmieniajaca obcojezyczne tlumaczenie
+        void change_polish_translation(); // metoda zmieniajaca polskie tlumaczenie
+        void show_words_by_letters()const; // metoda pokazujaca zawartosc slownika w zakresie liter od 'let_1st' do 'let_2nd'
         void show_dictionary_option()const; // metoda udostepniajaca spis opcji umozliwiajacych korzystanie ze slownika w trybie use_all()
         void use_all(); // metoda opisana we wstepie do klasy
     private:

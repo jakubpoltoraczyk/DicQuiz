@@ -1,6 +1,6 @@
 Autor: Jakub Półtoraczyk
 Data powstania: 15.09.20
-Wersja: DicQuiz 1.1
+Wersja: DicQuiz 1.25
 
 Instrukcja uruchomienia DicQuiz:
 

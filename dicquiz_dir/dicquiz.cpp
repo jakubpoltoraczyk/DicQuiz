@@ -1,4 +1,4 @@
-/* DicQuiz wersja 1.1 */
+/* DicQuiz wersja 1.25 */
 
 #include "dicquiz.h"
 
@@ -85,9 +85,9 @@ void DicQuiz::make_quiz()
                 {
                     std::cout << std::endl << "Pytanie nr " << i+1 << ": "; 
                     if(lang_choice==2) // rozroznienie wersji jezykowej
-                        std::cout << dic.get_foreign_word(question_number[i]) << std::endl;
+                        std::cout << dic.get_foreign_translation(question_number[i]) << std::endl;
                     else
-                        std::cout << dic.get_polish_word(question_number[i]) << std::endl;
+                        std::cout << dic.get_polish_translation(question_number[i]) << std::endl;
                     do
                     {
                         std::cout << "Gotowy na odpowiedz - nacisnij enter: ";
@@ -97,9 +97,9 @@ void DicQuiz::make_quiz()
                     }while(answer!='\n'); // proszenie do skutku o 'enter'
                     std::cout << "Tlumaczenie to: ";
                     if(lang_choice==2) // rozroznienie wersji jezykowej
-                        std::cout << dic.get_polish_word(question_number[i]) << std::endl;
+                        std::cout << dic.get_polish_translation(question_number[i]) << std::endl;
                     else
-                        std::cout << dic.get_foreign_word(question_number[i]) << std::endl;
+                        std::cout << dic.get_foreign_translation(question_number[i]) << std::endl;
                     do
                     {
                         std::cout << "Czy Twoja odpowiedz byla poprawna ('t' lub 'n')? ";
@@ -119,6 +119,7 @@ void DicQuiz::make_quiz()
                 }
                 std::cout << std::endl << "Twoj ostateczny rezultat to: " << 100*double(points)/total << "% (" << points << "/" << total << ")" << std::endl;
                 std::cout << "Gratulacje!" << std::endl;
+                points = total = 0;
             }
             else // jesli podano zly rozmiar quizu
             {

@@ -1,4 +1,4 @@
-/* DicQuiz wersja 1.1 */
+/* DicQuiz wersja 1.25 */
 
 /* Klasa reprezentujaca interaktywny program DicQuiz, ktorego celem jest umozliwienie nauki slowek obcojezycznych, 
    za posrednictwem prostego quizu opartego na tlumaczeniu slowek. Zawarty w klasie obiekt klasy::I_Dictionary stanowi
